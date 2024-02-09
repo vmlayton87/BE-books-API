@@ -8,6 +8,10 @@ booksApp.get(`/`,  (req, res)=>{
     .then(foundBooks=>{
         res.json(foundBooks)
     })
+    .catch((err)=>{
+        console.log(err)
+        res.status(404).json({error: err})
+    })
 })
 
 module.exports = booksApp
