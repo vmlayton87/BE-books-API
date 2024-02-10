@@ -59,7 +59,7 @@ booksApp.get(`/:id`, (req,res)=>{
         res.status(200).json(book)
     })
     .catch(err=>{
-        res.json({error: `that book ID can't be found.`})
+        res.status(400).json({error: `that book ID can't be found.`})
     })
 })
 
@@ -70,21 +70,21 @@ booksApp.put(`/:id`, (req,res)=>{
         console.log(updatedBook)
         res.status(200).json(updatedBook)
     })
-    .catch(err=>{res.json({error: `update failed`})})
+    .catch(res.status(400).json({error: `update failed`}))
 })
 
 // add a book
 booksApp.post(`/`, (req,res)=>{
     Book.create(req.body)
     .then((newBook)=>{res.status(200).json(newBook)})
-    .catch(err=>{res.json({error: `adding a new book failed`})})
+    .catch(err=>{res.status(400).json({error: `adding a new book failed`})})
 })
 
 // delete a book
 booksApp.delete(`/:id`, (req,res)=>{
     Book.findByIdAndDelete(req.params.id)
     .then(()=>{res.status(200).json({delete: `deleted book successful`})})
-    .catch(err=>{res.json({delete: `delete book failed`})})
+    .catch(err=>{res.status(400).json({delete: `delete book failed`})})
 })
 
 module.exports = booksApp
