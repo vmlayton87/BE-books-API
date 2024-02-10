@@ -25,6 +25,9 @@ app.use(`/books`, booksController)
 // landing page
 app.get(`/`, (req,res)=>{res.json({greeting:`Welcome to a books API landing page.`})})
 
+// error page
+app.get(`*`, (req, res)=>{res.status(404).json({error_message: `Sorry, but the page you are looking for can't be found.`})})
+
 // LISTEN
 app.listen(PORT, () => {
     console.log('Greetings! From port: ', PORT);

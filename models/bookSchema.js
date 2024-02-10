@@ -10,5 +10,5 @@ const bookSchema = new Schema ({
     imageURL: String
 })
 
-const Book =mongoose.model(`Language`, bookSchema)
+const Book =mongoose.model(`Book`, bookSchema)
 module.exports = Book
