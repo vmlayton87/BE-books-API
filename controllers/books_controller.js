@@ -70,7 +70,9 @@ booksApp.put(`/:id`, (req,res)=>{
         console.log(updatedBook)
         res.status(200).json(updatedBook)
     })
-    .catch(res.status(400).json({error: `update failed`}))
+    .catch((err)=>{
+        res.status(400).json({"message": `update failed`})
+    })
 })
 
 // add a book
